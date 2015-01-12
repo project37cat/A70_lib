@@ -121,19 +121,12 @@ for(uint16_t i=0; i<((101*64)/8+8); i++) lcd_data(0x00);
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void lcd_char(uint8_t sign, uint8_t v, uint8_t h)
 {
-uint8_t tmp;
-int16_t pos;
-
 if((v<9) && (h<13))
 	{
 	lcd_goto(v-1, 100-h*8);
 	if(sign<0x20) sign=0x20;
-	pos = 8*(sign-0x20);
-	for(uint8_t y=0; y<8; y++)
-		{
-		tmp = pgm_read_byte(&font8x8[pos++]);
-		lcd_data(tmp);
-		}
+	int16_t pos = 8*(sign-0x20);
+	for(uint8_t y=0; y<8; y++) lcd_data(pgm_read_byte(&font8x8[pos++]));
 	}
 }
 
