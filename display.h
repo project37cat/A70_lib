@@ -125,7 +125,7 @@ if((v>0 && v<9) && (h>0 && h<13))
 	{
 	lcd_goto(v-1, 100-h*8);
 	if(sign<0x20) sign=0x20;
-	int16_t pos = 8*(sign-0x20);
+	uint16_t pos = 8*(sign-0x20);
 	for(uint8_t y=0; y<8; y++) lcd_data(pgm_read_byte(&font8x8[pos++]));
 	}
 }
@@ -134,5 +134,5 @@ if((v>0 && v<9) && (h>0 && h<13))
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void lcd_string(uint8_t v, uint8_t h, char *str) //выводим строку //макс длина 12 символов
 {
-for(uint8_t c=0; ((c<12) && (*(str+c) != '\0')); c++) lcd_char(*(str+c),v,h+c);
+for(uint8_t c=0; ((c<12) && (*(str+c) != '\0')); c++) lcd_char(*(str+c), v, h+c);
 }
