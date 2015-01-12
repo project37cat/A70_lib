@@ -41,7 +41,7 @@ void lcd_init(void);
 void lcd_goto(uint8_t line, uint8_t row);
 void lcd_clear(void);
 void lcd_char(uint8_t sign, uint8_t v, uint8_t h);
-void lcd_string(uint8_t v, uint8_t h, char *str);
+void lcd_string(uint8_t v, uint8_t h, const char *str);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -132,7 +132,7 @@ if((v>0 && v<9) && (h>0 && h<13))
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-void lcd_string(uint8_t v, uint8_t h, char *str) //выводим строку //макс длина 12 символов
+void lcd_string(uint8_t v, uint8_t h, const char *str) //выводим строку //макс длина 12 символов
 {
-for(uint8_t c=0; ((c<12) && (*(str+c) != '\0')); c++) lcd_char(*(str+c), v, h+c);
+for(uint8_t c=0; ((c<12) && (*(str+c)!='\0')); c++) lcd_char(*(str+c), v, h+c);
 }
