@@ -86,9 +86,20 @@ lcd_write(0,data);
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void lcd_init(void)
 {
+// http://www.mikrocontroller.net/topic/180921
+_delay_us(10);
+DAT_L;
+SCK_L;
+DC_L;
+_delay_us(10);
+RST_H;
+_delay_us(10);
+CS_L;
+_delay_us(10);
 RST_L;
 _delay_us(10);
 RST_H;
+CS_H;
 
 lcd_command(0x21); // Function set: extended instruction set
 lcd_command(0x14); // Bias System
